@@ -1,0 +1,4 @@
+node_modules/
+archive/
+.cache/
+.DS_Store
