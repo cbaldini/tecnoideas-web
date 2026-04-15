@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Test Carousel</title>
+  <style>
+    .carousel-container {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      background: var(--bg-soft);
+      z-index: 1;
+      margin-top: 70px;
+      height: auto;
+      aspect-ratio: 16 / 9;
+      border: 2px solid red;
+    }
+    .banner-slide {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      transition: opacity 0.8s ease-in-out;
+      pointer-events: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 48px;
+      font-weight: bold;
+    }
+    .banner-slide.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .carousel-controls {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 12px;
+      z-index: 10;
+    }
+    .carousel-dot {
+  <!DOCTYPE html>
+<html>
+<head>
+  <title>Test Carousel</title>
+  <style>
+    .carousel-c25<html>
+<head>
+.6<head    borde  <style>
+    .carousel-contaso    .carer;
+    }
+    .carousel-dot.      width: 100%;
+     d:      overflow: hth      background: var(ad      z-index: 1;
+      margin-td>      margin-topla      height: auto;
+  ">      aspect-ratios=      border: 2px solid rect    }
+    .banner-slide {
+ 6b    >
+      position: ab</      inset: 0;
+      wias      width: 1e       height: 100="      opacity: 0;
+4;      transition
+       pointer-    <div class="carousel-contr      display: flex;
+     "c      align-items:  a      justify-content: ce</      font-size: 48px;
+      ca      font-weight: bol=    }
+    .banner-slide>
+    </      opacity: 1;
+      pg"      pointer-ev20    }
+    .carousel-contro
+     ri      position: absoluton      bottom: 20px;
+    el      left: 50%;
+ on      transformon      display: flex;
+      gap: 1rA      gap: 12px;
+  ;
+      z-index: =     }
+    .carousec    ll  <!DOCTYPE html>
+
+ <html>
+<head>
+  de<head;
+  <tion  <style>
+    .carousel-c25<h
+     .carut<head>
+.6<head    bord  .6<het     .carousel-contaso   tB    }
+    .carousel-dot.      wLo    g)     d:      overflow: hth      bacg.      margin-td>      margin-topla      height: auto;
+  ">      as    ">      aspect-ratios=      border: 2px sol      cur    .banner-slide {
+ 6b    >
+      position: ab</      iid 6b    >
+      pos('      p))        dots.forEach(dot => dot.classList.remove('active'));
+      slides[validIndex].classList.add       pointer-   dots[validIndex].classList.add('active');
+      updateLog(`[${new D      ca      font-weight: bol=    }
+    .banneralidIndex + 1}`);
+    }
+    fu    .banner-slide>
+    </      opace(    </      opaci;
+    }
+    function start    .carousel-contro
+     ri   ro     ri      positiva    el      left: 50%;
+ on      transformon      der on      transformon ro      gap: 1rA      gap: 12px;
+  ;
+    ll  ;
+      z-indexmo cambio en $  ut    .carousec    ll  
+ 
+ <html>
+<head>
+  de<head;
+  <tion {
+      if   de<Sc  <tion  )     .carousel-cut     .carut<head>
+  .6<head    bord -scroll pausado');
+    }
+    showSlide(0);
+    startAutoSc  ">      as    ">      aspect-ratios=      border: 2px sol      cur    .banner-slide {
+ 6b    >
+      position: ab</     nd 6b    >
+      position: ab</      iid 6b    >
+      pos('      p))        dots.forEac        p
+       pos('      p))        dots.fortL      slides[validIndex].classList.add       pointer-   dots[validIndex].classLst      updateLog(`[${new D      ca      font-weight: bol=    }
+    .banneralidIndex + 1}`);
+    }eL    .banneralidIndex + 1}`);
+    }
+    fu    .banner-slide>
+ }    }
+    fu    .banner</html    F
+    </      opace(    <rm /Users/cristianbaldini/Proyectos/tecnoideas-web/test_carousel.html
+cd /Users/cristianbaldini/Proyectos/tecnoideas-web && which node && node --version
+which -a npm node 2>/dev/null || find /usr/local -name "node" -o -name "npm" 2>/dev/null | head -5
+cat /Users/cristianbaldini/Proyectos/tecnoideas-web/dist/index.html
+cp /Users/cristianbaldini/Proyectos/tecnoideas-web/src/index.html /Users/cristianbaldini/Proyectos/tecnoideas-web/dist/index.html && cp /Users/cristianbaldini/Proyectos/tecnoideas-web/src/css/style.css /Users/cristianbaldini/Proyectos/tecnoideas-web/dist/css/style.css && cp /Users/cristianbaldini/Proyectos/tecnoideas-web/src/js/app.js /Users/cristianbaldini/Proyectos/tecnoideas-web/dist/js/app.js && echo "Archivos copiados exitosamente"
+wc -l /Users/cristianbaldini/Proyectos/tecnoideas-web/dist/index.html /Users/cristianbaldini/Proyectos/tecnoideas-web/dist/js/app.js /Users/cristianbaldini/Proyectos/tecnoideas-web/dist/css/style.css
+ls -la /Users/cristianbaldini/Proyectos/tecnoideas-web/src/index.html && head -5 /Users/cristianbaldini/Proyectos/tecnoideas-web/src/index.html
+file /Users/cristianbaldini/Proyectos/tecnoideas-web/src/index.html
+cat > /Users/cristianbaldini/Proyectos/tecnoideas-web/dist/js/app.js << 'ENDOFFILE'
+// Tecnoideas - Interactividad principal
+document.addEventListener('DOMContentLoaded', () => {
+  // ========================================
+  // MENÚ MÓVIL - HAMBURGUESA
+  // ========================================
+  const menuToggle = document.querySelector('.menu-toggle');
+  const siteNav = document.querySelector('.site-nav');
+  if (menuToggle && siteNav) {
+    menuToggle.addEventListener('click', () => {
+      const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+      menuToggle.setAttribute('aria-expanded', !isExpanded);
+      menuToggle.classList.toggle('active');
+      siteNav.classList.toggle('active');
+    });
+    // Cerrar menú al hacer clic en un enlace
+    const navLinks = siteNav.querySelectorAll('a');
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        menuToggle.setAttribute('aria-expanded', 'false');
+        menuToggle.classList.remove('active');
+        si// Tecnoideas - Interactividad principal
+document.addEventListener('DOMContentLoadlidocument.addEventListener('DOMContentLocl  // ========================================
+  // Mad  // MENÚ MÓVIL - HAMBURGUESA
+  // =======a-  // =========================en  const menuToggle = document.querySelector(si  const siteNav = document.querySelector('.site-nav');
+  if==  if (menuToggle && siteNav) {
+    menuToggle.addEvenES    menuToggle.addEventListen==      const isExpanded = menuToggle.getAttribel l      menuToggle.setAttribute('aria-expanded', !isExpanded);
+      menuToggl==      menuToggle.classList.toggle('active');
+      siteNav.==      siteNav.classList.toggle('active');
+ le    });
+    // Cerrar menú al hacer cliye    //      const navLinks = siteNav.querySelectorAllt     navLinks.forEach(link => {
+      link.addEvent==      link.addEventListener('/         menuToggle.setAttribute('aria-expan==        menuToggle.classList.remove('active');
+        sir         si// Tecnoideas - Interactividad prin')document.addEventListener('DOMContenst slides = doc  // Mad  // MENÚ MÓVIL - HAMBURGUESA
+  // =======a-  // =========================en  const menuToggle = document.querySelecto    // =======a-  // ==============; // 4   if==  if (menuToggle && siteNav) {
+        function showSlide(index) {
+      // Validar índice
+      const validIndex = index % slides.length;
+     menuToggle.addEvenES    menuTog        menuToggl==      menuToggle.classList.toggle('active');
+      siteNav.==      siteNav.classList.tove');
+      });
+      dots.forEach((dot) => {
+        dot.cla      siteNav.==      siteNav.classList.toggle('active');
+ lti le    });
+    // Cerrar menú al hacer cliye    //     x]    // Cet.      link.addEvent==      link.addEventListener('/         menuToggle.setAttribute('aria-expan==        menuToggle.cltI        sir         si// Tecnoideas - Interactividad prin')document.addEventListener('DOMContenst slides = doc  // Mad  // MENÚ MÓVIL - HAMB(a  // =======a-  // =========================en  const menuToggle = document.querySelecto    // =======a-  // ==============; // 4   if==  if (menuTooS        function showSlide(index) {
+      // Validar índice
+      const validIndex = index % slides.length;
+     menuToggle.addEvenES    menuTog        menuToggl== ho      // Validar índice
+      conol      const validIndex ;
+     menuToggle.addEvenES    menuTog        me        siteNav.==      siteNav.classList.tove');
+      });
+      dots.forEach((dot) => {
+        do);      });
+      dots.forEach((dot) => {
+      oS      do
+         dot.cla   roll();
+      });
+    });
+    // Pausar auto-scroll cuando se hace hover
+    carousel    // CerrarEv      // Validar índice
+      const validIndex = index % slides.length;
+     menuToggle.addEvenES    menuTog        menuToggl== ho      // Validar índice
+      conol      const validIndex ;
+     menuToggle.addEvenES    menuTog        me        siteNav.==      siteNav.classList.tove');
+      });
+      dots.forEach((dot) => {
+        do);      });
+      dots.forEach((dot) => {
+      oS      do
+         dot.cla   roll();
+      });
+    });
+    // Pausar auto-scroll cuando se hace hover
+    car  }
+      co      const validIndex ue     menuToggle.addEvenES    menuTog        mee.      conol      const validIndex ;
+     menuToggle.addEvenES    menuTog        mer     menuToggle.addEvenES    menuTge      });
+      dots.forEach((dot) => {
+        do);      });
+      dots.forEach((dot) => {
+  si      do          do);      });
+              dots.forEach(();      oS      do
+         do==         dot.cl==      });
+    });
+    // (s    });
+la     //     carousel    // CerrarEv      // Validar ?E      const validIndex = index % slides.length;
+  lo     menuToggle.addEvenES    menuTog        me==      conol      const validIndex ;
+     menuToggle.addEvenES    menuTog        m==     menuToggle.addEvenES    menuTOp      });
+      dots.forEach((dot) => {
+        do);      });
+      dots.forEach((dot) => {
+   I      doio        do);      });
+       entries.forEach(entry =      oS      do
+         doec                e      });
+    });
+    //  =    });
+      //tr    car  }
+      co      const validIndex ue         co })     menuToggle.addEvenES    menuTog        mer     menuToggle.addEvenES    menuTge      });
+      dots.forEach((do {      dots.forEach((dot) => {
+        do);      });
+      dots.forEach((dot) => {
+  si     e.        do);      });
+      as      dots.forEach((se  si      do          do);  );              dots.forEach(();======         do==         dot.cl==      });
+    }DA    });
+    // (s    });
+la     //    ==    //ifla     //     cry  lo     menuToggle.addEvenES    menuTog        me==      conol      const validIndex ;
+     menuTogetAtt     menuToggle.addEvenES    menuTog        m==     menuToggle.addEvenES    menuTOp   {
+      dots.forEach((dot) => {
+        do);      });
+      dots.forEach((dot) => {
+   I               do);      });
+      sf      dots.forEach((     I      }
+    @keyframes glo       entries.forEach(entry =    ha         doec                e      });
+    }
+     });
+    //  =    });
+      //tr   x     //,       //tr    c
+       co      conster      dots.forEach((do {      dots.forEach((dot) => {
+        do);      });
+      dots.forEach((dot) => {
+  si     e.        do);      });mp        do);      });
+      dots.forEach((dot) => {
+
+       dots.forEach((.h  si     e.        do);     DO      as      dots.forEach((se .j    }DA    });
+cat /Users/cristianbaldini/Proyectos/tecnoideas-web/src/index.html > /Users/cristianbaldini/Proyectos/tecnoideas-web/dist/index.html 2>&1 && echo "index.html copiado"
+cat /Users/cristianbaldini/Proyectos/tecnoideas-web/src/css/style.css > /Users/cristianbaldini/Proyectos/tecnoideas-web/dist/css/style.css 2>&1 && echo "style.css copiado"
+cp -r /Users/cristianbaldini/Proyectos/tecnoideas-web/src/img/* /Users/cristianbaldini/Proyectos/tecnoideas-web/dist/img/ 2>&1 && cp /Users/cristianbaldini/Proyectos/tecnoideas-web/src/*.png /Users/cristianbaldini/Proyectos/tecnoideas-web/dist/ 2>&1 && echo "Imágenes copiadas"
+head -1 /Users/cristianbaldini/Proyectos/tecnoideas-web/src/index.html /Users/cristianbaldini/Proyectos/tecnoideas-web/dist/index.html 2>&1 | cat
+python3 << 'PYTHON_EOF'
+import shutil
+import os
+src_index = '/Users/cristianbaldini/Proyectos/tecnoideas-web/src/index.html'
+dist_index = '/Users/cristianbaldini/Proyectos/tecnoideas-web/dist/index.html'
+if os.path.exists(src_index):
+    with open(src_index, 'r') as f:
+        content = f.read()
+    with open(dist_index, 'w') as f:
+        f.write(content)
+    print(f"✓ Copiado: {len(content)} bytes")
+    print(f"Primeras líneas: {content[:100]}")
+else:
+    print(f"✗ No existe: {src_index}")
+PYTHON_EOF
+cp /Users/cristianbaldini/Proyectos/tecnoideas-web/src/css/style.css /Users/cristianbaldini/Proyectos/tecnoideas-web/dist/css/style.css 2>&1
+python3 -c "
+import shutil
+shutil.copy('/Users/cristianbaldini/Proyectos/tecnoideas-web/src/css/style.css', '/Users/cristianbaldini/Proyectos/tecnoideas-web/dist/css/style.css')
+print('CSS copied')
+" 2>&1 || echo "Python failed"
+ls -lah /Users/cristianbaldini/Proyectos/tecnoideas-web/dist/css/style.css /Users/cristianbaldini/Proyectos/tecnoideas-web/src/css/style.css 2>&1
+ls -la /Users/cristianbaldini/Proyectos/tecnoideas-web/src/*.png 2>&1 | head -20
+cp -r /Users/cristianbaldini/Proyectos/tecnoideas-web/src/img/* /Users/cristianbaldini/Proyectos/tecnoideas-web/dist/img/ 2>&1 && ls -la /Users/cristianbaldini/Proyectos/tecnoideas-web/dist/img/
+python3 << 'EOF'
+import os
+import shutil
+src_dir = '/Users/cristianbaldini/Proyectos/tecnoideas-web/src/img'
+dist_dir = '/Users/cristianbaldini/Proyectos/tecnoideas-web/dist/img'
+# Listar y copiar cada archivo
+for filename in os.listdir(src_dir):
+    src_file = os.path.join(src_dir, filename)
+    dist_file = os.path.join(dist_dir, filename)
+    if os.path.isfile(src_file) and filename != '.gitkeep':
+        shutil.copy2(src_file, dist_file)
+        print(f'✓ Copiado: {filename}')
+print('\nArchivos en dist/img:')
+for f in os.listdir(dist_dir):
+    if f != '.gitkeep':
+        print(f'  - {f}')

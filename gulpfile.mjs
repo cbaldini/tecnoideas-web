@@ -8,6 +8,7 @@ import archiver from 'archiver';
 import { globSync } from 'glob';
 import { deleteSync } from 'del';
 import { createRequire } from 'module';
+import { execSync } from 'child_process';
 const require = createRequire(import.meta.url);
 const pkg = require('./package.json');
 
@@ -123,6 +124,18 @@ gulp.task('lint:js', () =>
     .pipe(gulpEslint.failOnError()),
 );
 
+gulp.task('webpack:build', (done) => {
+  try {
+    console.log('Building JavaScript with webpack...');
+    execSync('cd src && npm run build', { stdio: 'inherit' });
+    console.log('Webpack build completed successfully');
+    done();
+  } catch (err) {
+    console.error('Webpack build error:', err.message);
+    done(err);
+  }
+});
+
 // ---------------------------------------------------------------------
 // | Main tasks                                                        |
 // ---------------------------------------------------------------------
@@ -137,7 +150,7 @@ gulp.task(
   ),
 );
 
-gulp.task('build', gulp.series(gulp.parallel('clean', 'lint:js'), 'copy'));
+gulp.task('build', gulp.series(gulp.parallel('clean', 'lint:js'), 'webpack:build', 'copy'));
 
 gulp.task(
   'archive',

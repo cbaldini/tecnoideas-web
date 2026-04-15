@@ -1,9 +1,8 @@
 // Tecnoideas - Interactividad principal
 
 document.addEventListener('DOMContentLoaded', () => {
-  // ========================================
-  // MENÚ MÓVIL - HAMBURGUESA
-  // ========================================
+
+  // MENU MOVIL
   const menuToggle = document.querySelector('.menu-toggle');
   const siteNav = document.querySelector('.site-nav');
 
@@ -15,7 +14,6 @@ document.addEventListener('DOMContentLoaded', () => {
       siteNav.classList.toggle('active');
     });
 
-    // Cerrar menú al hacer clic en un enlace
     const navLinks = siteNav.querySelectorAll('a');
     navLinks.forEach(link => {
       link.addEventListener('click', () => {
@@ -25,7 +23,6 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
 
-    // Cerrar menú al hacer clic fuera
     document.addEventListener('click', (e) => {
       if (!e.target.closest('.site-header')) {
         menuToggle.setAttribute('aria-expanded', 'false');
@@ -35,52 +32,57 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // ========================================
-  // ANIMACIONES DEL LOGO
-  // ========================================
-  // El movimiento del logo y su reflejo se resuelve completamente en CSS
-
-  // ========================================
   // AÑO ACTUAL EN FOOTER
-  // ========================================
   const yearElement = document.getElementById('current-year');
   if (yearElement) {
     yearElement.textContent = new Date().getFullYear();
   }
 
-  // ========================================
-  // SMOOTH SCROLL PARA ANCLAS
-  // ========================================
+  // CARRUSEL DE BANNERS
+  const carouselContainer = document.querySelector('.carousel-container');
+  if (carouselContainer) {
+    const slides = document.querySelectorAll('.banner-slide');
+    const dots = document.querySelectorAll('.carousel-dot');
+    if (slides.length < 2) return;
+
+    let currentIndex = 0;
+
+    function showSlide(index) {
+      currentIndex = ((index % slides.length) + slides.length) % slides.length;
+      slides.forEach((s) => s.classList.remove('active'));
+      dots.forEach((d) => d.classList.remove('active'));
+      slides[currentIndex].classList.add('active');
+      if (dots[currentIndex]) dots[currentIndex].classList.add('active');
+    }
+
+    showSlide(0);
+
+    // Timer único y permanente — nunca se destruye ni recrea
+    setInterval(() => showSlide(currentIndex + 1), 15000);
+
+    // Clic en dot: solo cambia el slide, el timer sigue su ritmo
+    dots.forEach((dot, index) => {
+      dot.addEventListener('click', () => showSlide(index));
+    });
+  }
+
+  // SMOOTH SCROLL
   const anchorLinks = document.querySelectorAll('a[href^="#"]');
   anchorLinks.forEach(link => {
     link.addEventListener('click', (e) => {
       const href = link.getAttribute('href');
-      if (href === '#' || href === '#inicio') {
-        return;
-      }
-
+      if (href === '#' || href === '#inicio') return;
       const target = document.querySelector(href);
       if (target) {
         e.preventDefault();
         const headerHeight = document.querySelector('.site-header').offsetHeight;
-        const targetPosition = target.offsetTop - headerHeight;
-
-        window.scrollTo({
-          top: targetPosition,
-          behavior: 'smooth'
-        });
+        const targetPosition = Math.max(0, target.offsetTop - headerHeight);
+        window.scrollTo({ top: targetPosition, behavior: 'smooth' });
       }
     });
   });
 
-  // ========================================
-  // LOGO FLOTANTE (sin parallax)
-  // ========================================
-  // El logo ahora es sticky y solo hace el movimiento flotante en CSS
-
-  // ========================================
-  // OBSERVADOR DE INTERSECCIÓN PARA CARDS
-  // ========================================
+  // ANIMACION DE CARDS
   const observerOptions = {
     threshold: 0.1,
     rootMargin: '0px 0px -100px 0px'
@@ -101,6 +103,7 @@ document.addEventListener('DOMContentLoaded', () => {
     card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
     observer.observe(card);
   });
+
 });
 
 // ========================================

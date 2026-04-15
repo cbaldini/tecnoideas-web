@@ -2,6 +2,8 @@
    TECNOIDEAS - ESTILOS PRINCIPALES
    ============================================ */
 
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&family=JetBrains+Mono:wght@400;600&display=swap');
+
 :root {
   /* Colores principales - Tonos cálidos */
   --bg: #fffafb;
@@ -26,6 +28,7 @@
   --radius-md: 8px;
   --radius-sm: 4px;
   --container: min(1200px, calc(100% - 2rem));
+  --header-height: 70px;
 }
 
 * {
@@ -34,15 +37,22 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: var(--header-height);
 }
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   color: var(--text);
   background: var(--bg);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+}
+
+main {
+  display: block;
+  margin: 0;
+  padding: 0;
 }
 
 a {
@@ -56,21 +66,26 @@ img {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-weight: 600;
+  font-weight: 700;
   line-height: 1.2;
   margin-bottom: 1rem;
+  font-family: 'Inter', sans-serif;
+  letter-spacing: -0.02em;
 }
 
 h1 {
   font-size: 2.5rem;
+  font-weight: 800;
 }
 
 h2 {
   font-size: 2rem;
+  font-weight: 800;
 }
 
 h3 {
   font-size: 1.5rem;
+  font-weight: 700;
 }
 
 p {
@@ -80,12 +95,13 @@ p {
 
 .eyebrow {
   font-size: 0.875rem;
-  font-weight: 600;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.08em;
   color: var(--primary);
   margin-bottom: 1rem;
   display: block;
+  font-family: 'Space Mono', monospace;
 }
 
 .skip-link {
@@ -104,15 +120,28 @@ p {
   top: 0;
 }
 
+/* Scroll margin para secciones con anchor links */
+#inicio,
+#nosotros,
+#servicios,
+#productos,
+#experiencias,
+#contacto {
+  scroll-margin-top: 80px;
+}
+
+
 .container {
   width: var(--container);
   margin: 0 auto;
 }
 
 .site-header {
-  position: sticky;
+  position: fixed;
   top: 0;
-  z-index: 50;
+  left: 0;
+  z-index: 1000;
+  width: 100%;
   backdrop-filter: blur(10px);
   background: rgba(255, 250, 251, 0.95);
   border-bottom: 1px solid var(--border);
@@ -122,7 +151,7 @@ p {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 0;
+  padding: 0.5rem 0;
   min-height: 70px;
 }
 
@@ -134,7 +163,7 @@ p {
 }
 
 .brand-wordmark-image {
-  height: 60px;
+  height: 80px;
   width: auto;
 }
 
@@ -186,6 +215,90 @@ p {
 .menu-toggle.active span:nth-child(3) {
   transform: rotate(-45deg) translate(8px, -8px);
 }
+
+/* ============================================
+   CARRUSEL DE BANNERS
+   ============================================ */
+
+.carousel-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background: var(--bg-soft);
+  z-index: 1;
+  margin-top: var(--header-height);
+  height: 53.44vw; /* 16:9 ratio al 95% */
+  min-height: 380px;
+  max-height: 665px;
+}
+
+.banner-slide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.8s ease-in-out;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.banner-slide.active {
+  opacity: 1;
+  transition: opacity 0.8s ease-in-out;
+  pointer-events: auto;
+  z-index: 1;
+}
+
+.banner-image-link {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.banner-image-link img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+  object-position: center;
+  background: #f5f5f5;
+}
+
+.carousel-controls {
+  position: absolute;
+  bottom: 19px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 11px;
+  z-index: 10;
+}
+
+.carousel-dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.6);
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+}
+
+.carousel-dot:hover {
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.carousel-dot.active {
+  background: rgba(255, 255, 255, 1);
+  width: 30px;
+  border-radius: 6px;
+}
+
+/* ============================================
+   HERO SECTION
+   ============================================ */
 
 .hero {
   padding: 4rem 0;
@@ -269,7 +382,6 @@ p {
   animation: float-mirror 4.8s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
   filter: blur(2px);
   mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.32), rgba(0, 0, 0, 0.14) 38%, transparent 100%);
-  -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.32), rgba(0, 0, 0, 0.14) 38%, transparent 100%);
 }
 
 .hero-bottom {
@@ -419,23 +531,91 @@ p {
    ============================================ */
 
 .section {
-  padding: 1.5rem 0;
+  padding: 4rem 0;
 }
 
 .section-soft {
   background: linear-gradient(135deg, rgba(240, 249, 255, 0.5) 0%, rgba(255, 250, 251, 0.5) 100%);
 }
 
-.section-heading {
-  margin-bottom: 3rem;
-  max-width: 700px;
-  text-align: center;
-  margin-left: auto;
-  margin-right: auto;
+/* ============================================
+   BANNERS WEB Y APP
+   ============================================ */
+
+.banner-web,
+.banner-app {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
 }
 
-.section-heading h2 {
-  margin-bottom: 1rem;
+.banner-web {
+  background: transparent;
+}
+
+.banner-app {
+  background: transparent;
+}
+
+.banner-content {
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.banner-text h2 {
+  color: white;
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+  font-family: 'Inter', sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.banner-benefits {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+}
+
+.benefit-box {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  padding: 1.25rem 1.5rem;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.benefit-box:hover {
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: translateY(-4px);
+}
+
+.benefit-icon {
+  font-size: 1.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 48px;
+  flex-shrink: 0;
+}
+
+.benefit-text {
+  color: white;
+  font-weight: 600;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  font-family: 'Inter', sans-serif;
+  letter-spacing: -0.01em;
 }
 
 .section-grid {
@@ -720,6 +900,35 @@ p {
    ============================================ */
 
 @media (max-width: 768px) {
+
+  .banner-web,
+  .banner-app {
+    padding: 0;
+    margin: 0;
+  }
+
+  .banner-text h2 {
+    font-size: 1.75rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .banner-benefits {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .benefit-box {
+    padding: 1rem 1.25rem;
+  }
+
+  .benefit-icon {
+    font-size: 1.5rem;
+    min-width: 40px;
+  }
+
+  .benefit-text {
+    font-size: 0.85rem;
+  }
   .menu-toggle {
     display: flex;
   }
@@ -848,6 +1057,43 @@ p {
     font-size: 1rem;
   }
 
+  .banner-web,
+  .banner-app {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+  }
+
+  .banner-content {
+    padding: 0;
+  }
+
+  .banner-text h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1.25rem;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  .banner-benefits {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .benefit-box {
+    padding: 0.875rem 1rem;
+    border-radius: 8px;
+  }
+
+  .benefit-icon {
+    font-size: 1.25rem;
+    min-width: 36px;
+  }
+
+  .benefit-text {
+    font-size: 0.8rem;
+    font-weight: 600;
+  }
+
   .card-grid,
   .product-grid,
   .experience-list {
@@ -903,6 +1149,8 @@ p {
     padding: 1.5rem;
   }
 }
+
+
 
 /* ============================================
    ACCESIBILIDAD - REDUCE MOTION

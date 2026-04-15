@@ -38,6 +38,8 @@
       </button>
 
       <nav class="site-nav" id="site-nav" aria-label="Navegación principal">
+        <a href="#web">Web</a>
+        <a href="#app">Aplicaciones</a>
         <a href="#nosotros">Nosotros</a>
         <a href="#servicios">Qué hacemos</a>
         <a href="#productos">Productos</a>
@@ -48,6 +50,34 @@
   </header>
 
   <main id="contenido">
+    <span id="web" aria-hidden="true" style="position:absolute;visibility:hidden;"></span>
+    <span id="app" aria-hidden="true" style="position:absolute;visibility:hidden;"></span>
+    <div class="carousel-container">
+      <section class="banner-slide banner-web active">
+        <a href="#contacto" class="banner-image-link">
+          <img src="img/tecnoideas-flyer-webs.png" alt="Tu página web personalizada" width="100%" height="auto">
+        </a>
+      </section>
+
+      <section class="banner-slide banner-app">
+        <a href="#contacto" class="banner-image-link">
+          <img src="img/tecnoideas-flyer-apps.png" alt="Creá tu app con nosotros" width="100%" height="auto">
+        </a>
+      </section>
+
+      <section class="banner-slide banner-infra">
+        <a href="#contacto" class="banner-image-link">
+          <img src="img/tecnoideas-flyer-infra.png" alt="Construimos tu infraestructura digital" width="100%" height="auto">
+        </a>
+      </section>
+
+      <div class="carousel-controls">
+        <button class="carousel-dot active" data-index="0" aria-label="Ir a slide 1"></button>
+        <button class="carousel-dot" data-index="1" aria-label="Ir a slide 2"></button>
+        <button class="carousel-dot" data-index="2" aria-label="Ir a slide 3"></button>
+      </div>
+    </div>
+
     <section class="hero" id="inicio">
       <div class="container hero-shell">
         <div class="hero-top">
